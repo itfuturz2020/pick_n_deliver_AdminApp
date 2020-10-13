@@ -48,7 +48,7 @@ class _Coupon_ComponentState extends State<Coupon_Component> {
                   width: 100,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                        child: Image.network(cnst.IMG_URL+
+                        child: Image.network(cnst.API_URL+
                         '${widget.couponList["image"]}',fit: BoxFit.fill),
                   )),
               Expanded(child: Padding(

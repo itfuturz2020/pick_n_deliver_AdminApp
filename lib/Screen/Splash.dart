@@ -21,39 +21,40 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   @override
   void initState() {
     //getSuggestion();
-        animationController = AnimationController(
+    animationController = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
     )..repeat(reverse: false);
     animation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(1.5, 0.0),
+      end: const Offset(1, 0.0),
     ).animate(CurvedAnimation(
       parent: animationController,
       curve: Curves.elasticIn,
     ));
-    Timer(Duration(milliseconds: 4200), () async {
+
+    Timer(Duration(milliseconds: 4000), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
 
       String Id = prefs.getString(cnst.Session.Id);
-
-      if (Id != null && Id != "") {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/Home', (Route<dynamic> route) => false);
-      } else {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('/Login', (Route<dynamic> route) => false);
-      }
+      FirebaseFirestore.instance.collection("PND-URL").get().then((value) {
+        cnst.API_URL = "${value.docs[0]["PND-URL"]}";
+        if (Id != null && Id != "") {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              '/Home', (Route<dynamic> route) => false);
+        } else {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              '/Login', (Route<dynamic> route) => false);
+        }
+      });
     });
     // TODO: implement initState
     super.initState();
   }
 
   Future getSuggestion() =>
-      FirebaseFirestore.instance
-          .collection('PND-URL').get()
-          .then((snapshot) {
-            print("Firebase Collection"+snapshot.toString());
+      FirebaseFirestore.instance.collection('PND-URL').get().then((snapshot) {
+        print("Firebase Collection" + snapshot.toString());
       });
 
   @override

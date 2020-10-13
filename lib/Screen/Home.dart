@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -372,7 +374,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.network(
-                '${cnst.IMG_URL + categoryList[index]["image"]}',
+                '${cnst.API_URL + categoryList[index]["image"]}',
                 width: 45,
               ),
               new Text(
@@ -542,7 +544,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     "${ordersettings[0]["settings"][0]["FromTime"]}" +
                                     " to " +
                                     "${ordersettings[0]["settings"][0]["ToTime"]}",
-                                style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold))),
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold))),
                       ),
                     ),
                     Padding(
@@ -568,7 +572,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                     left: 2.0,
                                   ),
                                   child: new Image.network(
-                                      "${cnst.IMG_URL + i["image"]}",
+                                      "${cnst.API_URL + i["image"]}",
                                       fit: BoxFit.cover,
                                       width:
                                           MediaQuery.of(context).size.width));

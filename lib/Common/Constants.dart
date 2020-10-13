@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 //const String API_URL = "https://shrouded-savannah-05270.herokuapp.com/";
-const String API_URL = "http://13.126.231.240/";
-const String IMG_URL = "http://13.126.231.240/";
+String API_URL = "";
+//const String API_URL = "http://13.126.231.240/";
 const Inr_Rupee = "₹";
 const String whatsAppLink = "https://wa.me/#mobile?text=#msg";
 const String smsLink = "sms:#mobile?body=#msg";
 const String mailLink = "mailto:#mail?subject=#subject&body=#msg";
 const String API_URL_RazorPay_Order =
     "http://razorpayapi.itfuturz.com/Service.asmx/";
-String CouponCode="CouponCode";
+String CouponCode = "CouponCode";
 
 class Session {
   static const String Id = "Id";
@@ -39,8 +39,6 @@ Map<int, Color> appColorMap1 = {
   800: Color.fromRGBO(56, 31, 113, .9),
   900: Color.fromRGBO(56, 31, 113, 1),
 };
-
-
 
 MaterialColor appPrimaryMaterialColor1 =
     MaterialColor(0xFF381F71, appColorMap1);

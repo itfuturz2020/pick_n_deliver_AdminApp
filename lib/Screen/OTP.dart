@@ -279,7 +279,7 @@ class _OTPState extends State<OTP> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Didin't get Code? ",
+                Text("Didn't get Code? ",
                     style:
                         TextStyle(fontSize: 17, color: Colors.grey.shade600)),
                 InkWell(

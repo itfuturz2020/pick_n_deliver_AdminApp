@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +21,9 @@ import 'package:pickndeliver/Screen/Splash.dart';
 import 'package:pickndeliver/Common/Constants.dart' as cnst;
 import 'package:pickndeliver/Screen/TermsAndCondition.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -33,15 +36,15 @@ class _MyAppState extends State<MyApp> {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-     _firebaseMessaging.configure(
+    _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
         print("onMessage: $message");
-        showNotification(message["notification"]["title"], message["notification"]["body"]);
+        showNotification(
+            message["notification"]["title"], message["notification"]["body"]);
       },
       onLaunch: (Map<String, dynamic> message) async {
         print("onLaunch: $message");
@@ -57,16 +60,14 @@ class _MyAppState extends State<MyApp> {
     flutterLocalNotificationsPlugin.initialize(initSetttings);
   }
 
-  showNotification(String title,String body) async {
+  showNotification(String title, String body) async {
     var android = new AndroidNotificationDetails(
         'channel id', 'channel NAME', 'CHANNEL DESCRIPTION',
-        priority: Priority.High,importance: Importance.Max
-    );
+        priority: Priority.High, importance: Importance.Max);
     var iOS = new IOSNotificationDetails();
     var platform = new NotificationDetails(android, iOS);
-    await flutterLocalNotificationsPlugin.show(
-        0, '${title}', '${body}', platform,
-        payload: 'Pick N Delivere');
+    await flutterLocalNotificationsPlugin
+        .show(0, '${title}', '${body}', platform, payload: 'Pick N Delivere');
   }
 
   @override
