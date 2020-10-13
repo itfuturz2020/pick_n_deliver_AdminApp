@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "479968508272",
+    "firebase_url": "https://erudite-imprint-273205.firebaseio.com",
+    "project_id": "erudite-imprint-273205",
+    "storage_bucket": "erudite-imprint-273205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479968508272:android:151a6d41e10aed91df77b5",
+        "android_client_info": {
+          "package_name": "com.pickdeliveremployeeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479968508272-liemti4i9ki9kg6ftbd9cljp0p7e9b2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "22c8e1eeeea411201421f9276b6fb98e75b5a08b"
+          }
+        },
+        {
+          "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDYEW4HHfAohzknHmD6Ixl6U0vieK6KaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "479968508272-pl8flek6eoas100sb04oc8t24cqq00f1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pickNDeliver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479968508272:android:e9bf1a763f1d520edf77b5",
+        "android_client_info": {
+          "package_name": "com.pickndeliver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479968508272-1nv3dlins8m58j8g3bpq59kccok05fck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "22c8e1eeeea411201421f9276b6fb98e75b5a08b"
+          }
+        },
+        {
+          "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDYEW4HHfAohzknHmD6Ixl6U0vieK6KaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "479968508272-pl8flek6eoas100sb04oc8t24cqq00f1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pickNDeliver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

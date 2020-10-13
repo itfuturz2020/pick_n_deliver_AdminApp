@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>479968508272-s441d1jp3eepj8eum2mvu5u635h0g9g1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.479968508272-s441d1jp3eepj8eum2mvu5u635h0g9g1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>479968508272-ho6h4pjb0u5v4kk6d565ie4g60fk4bbc.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB1T_hC2qdhfHFA9IJF0vClddTGDRsbAqA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>479968508272</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pickNDelivercustomer</string>
+	<key>PROJECT_ID</key>
+	<string>erudite-imprint-273205</string>
+	<key>STORAGE_BUCKET</key>
+	<string>erudite-imprint-273205.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:479968508272:ios:da0853d643b6ef0cdf77b5</string>
+	<key>DATABASE_URL</key>
+	<string>https://erudite-imprint-273205.firebaseio.com</string>
+</dict>
+</plist>
