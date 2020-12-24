@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //const String API_URL = "https://shrouded-savannah-05270.herokuapp.com/";
-String API_URL = "";
+String API_URL = "http://13.126.231.240/";
 //const String API_URL = "http://13.126.231.240/";
 const Inr_Rupee = "₹";
 const String whatsAppLink = "https://wa.me/#mobile?text=#msg";

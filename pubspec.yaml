@@ -45,6 +45,7 @@ dependencies:
   firebase_messaging: ^6.0.9
   flutter_local_notifications: ^1.4.2
   share: ^0.6.4+2
+  intl: ^0.16.0
   path_provider: ^1.6.8
   animated_text_kit: ^2.0.0
   cloud_firestore: ^0.14.1+3

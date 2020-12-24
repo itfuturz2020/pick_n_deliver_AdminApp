@@ -9,6 +9,78 @@ import 'package:pickndeliver/Common/Constants.dart';
 Dio dio = new Dio();
 
 class Services {
+
+  static Future<List> EmployeehistoryData(body) async {
+    print(body.toString());
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/getAllEmployee';
+    print("EmployeehistoryData data url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        print("EmployeehistoryData data Response: " + response.data.toString());
+        return response.data["Data"];
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("Process data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> Processing(body) async {
+    print(body.toString());
+    String url = cnst.API_URL + 'admin/orders';
+    print("Processing data url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        // SaveDataClass saveData =
+        print("Process data Response: " + response.data.toString());
+        // var memberDataClass = response.data;
+        // saveData.Message = memberDataClass["Message"];
+        // saveData.IsSuccess = memberDataClass["IsSuccess"];
+        // saveData.Content = memberDataClass["Data"];
+
+        return response.data;
+
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("Process data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<SaveDataClass> getEmployeeOrderDetails(body) async {
+    print(body.toString());
+    String url ='https://pick-and-delivery.herokuapp.com/couriers/getEmployeeOrderDetails';
+    print("getEmployeeOrderDetails data url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        SaveDataClass saveData =
+        new SaveDataClass(Message: 'No Data', IsSuccess: false, Data: "0");
+        print("getEmployeeOrderDetails Response: " + response.data.toString());
+        var memberDataClass = response.data;
+        saveData.Message = memberDataClass["Message"];
+        saveData.IsSuccess = memberDataClass["IsSuccess"];
+        saveData.Content = memberDataClass["Data"];
+
+        return saveData;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("getEmployeeOrderDetails data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
   static Future<SaveDataClass> SignUp(body) async {
     print(body.toString());
     String url = cnst.API_URL + 'customers/signup2';
@@ -101,6 +173,7 @@ class Services {
 
         return saveData;
       } else {
+
         throw Exception(response.data.toString());
       }
     } catch (e) {

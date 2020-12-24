@@ -41,10 +41,10 @@ class _OTPState extends State<OTP> {
     _onVerifyCode();
   }
 
-  PinDecoration _pinDecoration = UnderlineDecoration(
-      color: Colors.grey,
-      enteredColor: cnst.appPrimaryMaterialColor1,
-      hintText: '000000');
+  // PinDecoration _pinDecoration = UnderlineDecoration(
+  //     color: Colors.grey,
+  //     enteredColor: cnst.appPrimaryMaterialColor1,
+  //     hintText: '000000');
 
   void _onVerifyCode() async {
     setState(() {
@@ -226,7 +226,7 @@ class _OTPState extends State<OTP> {
               padding: const EdgeInsets.all(8.0),
               child: PinInputTextField(
                 pinLength: 6,
-                decoration: _pinDecoration,
+                //decoration: _pinDecoration,
                 controller: controller,
                 autoFocus: true,
                 textInputAction: TextInputAction.done,

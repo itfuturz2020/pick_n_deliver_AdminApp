@@ -41,7 +41,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
         cnst.API_URL = "${value.docs[0]["PND-URL"]}";
         if (Id != null && Id != "") {
           Navigator.of(context).pushNamedAndRemoveUntil(
-              '/Home', (Route<dynamic> route) => false);
+              '/Orders', (Route<dynamic> route) => false);
         } else {
           Navigator.of(context).pushNamedAndRemoveUntil(
               '/Login', (Route<dynamic> route) => false);

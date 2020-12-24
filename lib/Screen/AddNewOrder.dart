@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'dart:ui';
 
@@ -14,17 +13,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart' as loc;
 import 'package:multiselect_formfield/multiselect_formfield.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:vibration/vibration.dart';
-import '../Common/ClassList.dart';
-import '../Common/Constants.dart' as cnst;
-import '../Common/Services.dart';
-
-import '../Screen/ContactList.dart';
-import '../Screen/Coupons_offers.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vibration/vibration.dart';
 
+import '../Common/ClassList.dart';
+import '../Common/Constants.dart' as cnst;
+import '../Common/Services.dart';
+import '../Screen/ContactList.dart';
+import '../Screen/Coupons_offers.dart';
 import 'ContactList.dart';
 
 const kGoogleApiKey = "AIzaSyCm9L8-lLCSpRYME1D4lfMb4CS-oX1U6eQ";
@@ -468,6 +466,8 @@ class _AddNewOrderState extends State<AddNewOrder> {
         Services.PlaceOrder(data).then((data) async {
           if (data.IsSuccess == true) {
             pr.hide();
+
+
             Fluttertoast.showToast(
                 msg: "New Order Added Successfully !!!",
                 backgroundColor: cnst.appPrimaryMaterialColor1,
@@ -1662,7 +1662,7 @@ class _AddNewOrderState extends State<AddNewOrder> {
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: MultiSelectFormField(
                         autovalidate: false,
-                        titleText: 'Parcel Content',
+                       // titleText: 'Parcel Content',
                         validator: (value) {
                           if (value == null || value.length == 0) {
                             return 'Please select one or more options';
@@ -1676,7 +1676,7 @@ class _AddNewOrderState extends State<AddNewOrder> {
                         okButtonLabel: 'OK',
                         cancelButtonLabel: 'CANCEL',
                         // required: true,
-                        hintText: 'Please choose one or more',
+                        //hintText: 'Please choose one or more',
                         onSaved: (value) {
                           print(value);
                           if (value == null) return;

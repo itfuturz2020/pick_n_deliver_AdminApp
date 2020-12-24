@@ -7,6 +7,7 @@ import 'package:pickndeliver/Screen/ActiveOrderDetails.dart';
 import 'package:pickndeliver/Screen/AddNewOrder.dart';
 import 'package:pickndeliver/Screen/ContactList.dart';
 import 'package:pickndeliver/Screen/Coupons_offers.dart';
+import 'package:pickndeliver/Screen/EmployeeDeliveryHistory.dart';
 import 'package:pickndeliver/Screen/Help.dart';
 import 'package:pickndeliver/Screen/Home.dart';
 import 'package:pickndeliver/Screen/Login.dart';
@@ -92,6 +93,7 @@ class _MyAppState extends State<MyApp> {
         '/TermsAndCondition': (context) => TermsAndCondition(),
         '/ContactList': (context) => ContactList(),
         '/Coupons_offers': (context) => Coupons_offers(),
+        '/EmplyoyeeDelivery': (context) => EmployeeDeliveryHistory(),
       },
       theme: ThemeData(
         fontFamily: 'Helvetica',

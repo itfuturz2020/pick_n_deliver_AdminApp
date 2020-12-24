@@ -20,6 +20,11 @@ import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'EmployeeDeliveryDateFilter.dart';
+import 'EmployeeDeliveryHistory.dart';
+import 'Login.dart';
+import 'ProcessingOrderData.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -40,6 +45,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   LocationData currentLocation;
   bool _serviceEnabled = false;
 
+  @override
+  void initState() {
+    log("arpitshah");
+    super.initState();
+    _requestService();
+    //getLocation();
+    _banners();
+    _getOrderSettings();
+    _getLocal();
+    _configureNotification();
+  }
+
   void launchWhatsApp({
     @required String phone,
     @required String message,
@@ -56,6 +73,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       await launch(url());
     } else {
       throw 'Could not launch ${url()}';
+    }
+  }
+
+  Future<void> _requestService() async {
+    if (_serviceEnabled == null || !_serviceEnabled) {
+      final bool serviceRequestedResult = await location.requestService();
+      setState(() {
+        _serviceEnabled = serviceRequestedResult;
+      });
     }
   }
 
@@ -115,26 +141,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     } on SocketException catch (_) {
       //showMsg("No internet connection");
     }
-  }
-
-  Future<void> _requestService() async {
-    if (_serviceEnabled == null || !_serviceEnabled) {
-      final bool serviceRequestedResult = await location.requestService();
-      setState(() {
-        _serviceEnabled = serviceRequestedResult;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _requestService();
-    //getLocation();
-    _banners();
-    _getOrderSettings();
-    _getLocal();
-    _configureNotification();
   }
 
   getLocation() async {
@@ -389,307 +395,110 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
+  List courierIds=[];
+
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: onWillPop,
-        child: Scaffold(
-          appBar: AppBar(
-            brightness: Brightness.light,
-            // or use Brightness.dark
-            iconTheme: new IconThemeData(color: cnst.appPrimaryMaterialColor1),
-            backgroundColor: Colors.white,
-            title: Image.asset(
-              'images/logo.png',
-              fit: BoxFit.contain,
-              height: 28,
-            ),
-            centerTitle: true,
-          ),
-          drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                UserAccountsDrawerHeader(
-                  margin: EdgeInsets.zero,
-                  accountName:
-                      new Text("${name}", style: TextStyle(fontSize: 16)),
-                  accountEmail: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/MyProfile');
-                    },
-                    child: Row(
-                      children: <Widget>[
-                        Text("${email}"),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 6.0),
-                          child:
-                              Icon(Icons.edit, size: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                  decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                      image: new ExactAssetImage('images/drawe_background.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  currentAccountPicture: Container(
-                    width: 0,
-                    height: 0,
-                    decoration: BoxDecoration(
-                        image: new DecorationImage(
-                            image: AssetImage('images/avtarprofile.png'),
-                            fit: BoxFit.cover),
-                        borderRadius:
-                            BorderRadius.all(new Radius.circular(200.0)),
-                        border: Border.all(width: 0.5, color: Colors.black54)),
-                  ),
-                ),
-                new ListTile(
-                    leading: Icon(
-                      Icons.home,
-                      size: 20,
-                    ),
-                    title: new Text("Home"),
-                    onTap: () {
-                      Navigator.pop(context);
-                    }),
-                new ListTile(
-                    leading: Icon(Icons.local_offer, size: 20),
-                    title: new Text("Coupons & Offers"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/Coupons_offers');
-                    }),
-                new ListTile(
-                    leading: Icon(
-                      Icons.shopping_cart,
-                      size: 20,
-                    ),
-                    title: new Text("Orders"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/Orders');
-                    }),
-                new ListTile(
-                    leading: Icon(Icons.question_answer, size: 20),
-                    title: new Text("Help"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      launchWhatsApp(
-                          phone:
-                              "+91${ordersettings[0]["settings"][0]['WhatsAppNo']}",
-                          message:
-                              "${ordersettings[0]["settings"][0]['DefaultWMessage']}");
-                      //whatsAppOpen();
-                    }),
-/*
-                new ListTile(
-                    leading: Icon(Icons.insert_drive_file,size: 20),
-                    title: new Text("Terms & Conditions"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '/TermsAndCondition');
-                    }),
-*/
-                Divider(),
-                new ListTile(
-                    leading: Icon(
-                      Icons.share,
-                      size: 20,
-                    ),
-                    title: new Text("Share"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Share.share(
-                          "${ordersettings[0]["settings"][0]["AppLink"]}");
-                    }),
-                new ListTile(
-                    leading: Icon(
-                      Icons.assignment,
-                      size: 20,
-                    ),
-                    title: new Text("Terms & Conditions"),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Navigator.pushNamed(context, '/TermsAndCondition');
-                    }),
-                new ListTile(
-                    leading: Icon(Icons.power_settings_new, size: 20),
-                    title: new Text("Logout"),
-                    onTap: () {
-                      Navigator.pop(context);
-                      _showConfirmDialog();
-                    }),
-              ],
-            ),
-          ),
-          body: dashboardDataList.length > 0
-              ? Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 8.0, right: 8.0, top: 8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(4.0)),
-                        width: MediaQuery.of(context).size.width,
-                        height: 28,
-                        child: Center(
-                            child: Text(
-                                "Delivery Timing: " +
-                                    "${ordersettings[0]["settings"][0]["FromTime"]}" +
-                                    " to " +
-                                    "${ordersettings[0]["settings"][0]["ToTime"]}",
-                                style: TextStyle(
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold))),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: CarouselSlider(
-                        options: CarouselOptions(
-                          viewportFraction: 0.9,
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 1500),
-                          height: 170.0,
-                          enlargeCenterPage: false,
-                          autoPlay: true,
-                          disableCenter: true,
-                          initialPage: 0,
-                          reverse: false,
-                        ),
-                        items: bannerList.map((i) {
-                          return new Builder(
-                            builder: (BuildContext context) {
-                              return new Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: new EdgeInsets.only(
-                                    left: 2.0,
-                                  ),
-                                  child: new Image.network(
-                                      "${cnst.API_URL + i["image"]}",
-                                      fit: BoxFit.cover,
-                                      width:
-                                          MediaQuery.of(context).size.width));
-                            },
-                          );
-                        }).toList(),
-                      ),
-                    ),
-/*
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 20.0, left: 12, right: 12.0, bottom: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              //color: cnst.appPrimaryMaterialColor1[100],
-                              color: Colors.grey[200],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(6.0))),
-                          height: 45,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(Icons.local_offer,
-                                  color: cnst.appPrimaryMaterialColor1,
-                                  size: 20),
-                              Text(
-                                " Coupon & Offers",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: cnst.appPrimaryMaterialColor1),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(6.0))),
-                          height: 45,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(Icons.shopping_cart,
-                                  color: cnst.appPrimaryMaterialColor1,
-                                  size: 20),
-                              Text(
-                                "  Orders",
-                                style: TextStyle(
-                                    color: cnst.appPrimaryMaterialColor1,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          brightness: Brightness.light,
+          // or use Brightness.dark
+          iconTheme: new IconThemeData(color: cnst.appPrimaryMaterialColor1),
+          backgroundColor: Colors.white,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
+                },
+                child: Icon(
+                  Icons.logout,
                 ),
               ),
-*/
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0, bottom: 2.0),
-                      child: Text(
-                        "What you want to deliver ?",
-                        style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Divider(
-                      endIndent: 50,
-                      indent: 50,
-                    ),
-                    _getGridView(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      // 'images/logo.png'
-                      child: Image.asset(
-                        'images/sub_banner.jpg',
-                      ),
-                      // 'http://www.pickndelivere.com/Assets/img/LatestNews/Pick%20N%20Deliver%20Banner.jpg'),
-                    )
-                  ],
-                )
-              : HomeScreenShimmer(),
-          floatingActionButton: FloatingActionButton.extended(
-              backgroundColor: cnst.appPrimaryMaterialColor1,
-              onPressed: () {
-                // added new toast for selection  of new category
-                Fluttertoast.showToast(msg: "Please  Select a Category");
-                // added a pop of categories
-                /*_showChooseDialog();*/
-                /*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddNewOrder(
-                          orderSetting: ordersettings[0]["deliverytypes"],
-                          categoryList: categoryList),
-                    ));*/
+            ),
+          ],
+          title: Text(
+            'Orders',
+            style: TextStyle(
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+              color: cnst.appPrimaryMaterialColor1,
+            ),
+          ),
+          centerTitle: true,
+          bottom: TabBar(
+            indicatorColor: cnst.appPrimaryMaterialColor1,
+            unselectedLabelColor: Colors.black,
+            labelColor: cnst.appPrimaryMaterialColor1,
+            tabs: [
+              Tab(
+                child: Text(
+                  //"Inside",
+                  "Processing",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    color: cnst.appPrimaryMaterialColor1,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Running",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Cancelled",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              // Tab(
+              //   child: Text(
+              //     "COMPLETED",
+              //     style:
+              //     TextStyle(
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 9,
+              //     ),
+              //   ),
+              // )
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            ProcessingOrderData(
+              'pendingOrders',
+              getcoureirid: (value){
+                courierIds.add(value);
               },
-              label: Row(
-                children: <Widget>[Icon(Icons.add), Text('Add New Order')],
-              )),
-        ));
+            ),
+            ProcessingOrderData(
+              'runningOrders',
+              getcoureirid: (value){
+                courierIds.add(value);
+              },
+            ),
+            ProcessingOrderData(
+              'cancelledOrders',
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

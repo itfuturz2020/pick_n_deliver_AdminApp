@@ -15,11 +15,51 @@
       },
       "oauth_client": [
         {
-          "client_id": "479968508272-liemti4i9ki9kg6ftbd9cljp0p7e9b2g.apps.googleusercontent.com",
+          "client_id": "479968508272-nclj3pmjj328fc376rfc5r9a2rg65fqi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pickdeliveremployeeapp",
-            "certificate_hash": "22c8e1eeeea411201421f9276b6fb98e75b5a08b"
+            "certificate_hash": "8700a22acbd8d3a9ba23c8ac2cb70111c9d8e25c"
+          }
+        },
+        {
+          "client_id": "479968508272-0chqosddt540g9boh10sffudfvo04dkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "0274e526280523edfd74f1709acf772453adadfe"
+          }
+        },
+        {
+          "client_id": "479968508272-ho6h4pjb0u5v4kk6d565ie4g60fk4bbc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "89006781e9fa27cc08668cb3b6553bd259ae9c47"
+          }
+        },
+        {
+          "client_id": "479968508272-4ndcg2rkr4jaarpt6rvjhcr45giq3jfr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "17caeea06fd73de328e9a2c2baa9357b6d63e10d"
+          }
+        },
+        {
+          "client_id": "479968508272-7opd90pm8hr15rri4iqlevqdlspfppv4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "6b4e1e1af3f298675959bdd1bb086c857b0d90aa"
+          }
+        },
+        {
+          "client_id": "479968508272-phcp9f2l17pjh39hvrpu6e3nllccu0o4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickdeliveremployeeapp",
+            "certificate_hash": "640ed3ab14f2981c843abf9774dce6d9d212724e"
           }
         },
         {
@@ -40,10 +80,10 @@
               "client_type": 3
             },
             {
-              "client_id": "479968508272-pl8flek6eoas100sb04oc8t24cqq00f1.apps.googleusercontent.com",
+              "client_id": "479968508272-s441d1jp3eepj8eum2mvu5u635h0g9g1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.pickNDeliver"
+                "bundle_id": "com.pickNDelivercustomer"
               }
             }
           ]
@@ -58,6 +98,54 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "479968508272-vu003mo27asnl1its8mm8agvh5lv3hs9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "8700a22acbd8d3a9ba23c8ac2cb70111c9d8e25c"
+          }
+        },
+        {
+          "client_id": "479968508272-lk9211jhege1mfjrdmq4hiq1m9g5dali.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "17caeea06fd73de328e9a2c2baa9357b6d63e10d"
+          }
+        },
+        {
+          "client_id": "479968508272-aqm46jp4edkup8isv55pg4hkoivqvoip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "59f8c028611c0dc1139f1f4ea36fa69f43d88ea9"
+          }
+        },
+        {
+          "client_id": "479968508272-hnsbd2i5pd2t3v8tbtm8mcuak4qhb660.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "640ed3ab14f2981c843abf9774dce6d9d212724e"
+          }
+        },
+        {
+          "client_id": "479968508272-cscrr57ar57bpslin4rh5b26j3qmltic.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "064f58fc91a4e0d3a88e96187d4b7d5381ede075"
+          }
+        },
+        {
+          "client_id": "479968508272-htgldmcgvmfh8flpahum3k0b2cldjvic.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pickndeliver",
+            "certificate_hash": "fa88832b40ec1084d7daa14385e69257b06d05a6"
+          }
+        },
         {
           "client_id": "479968508272-1nv3dlins8m58j8g3bpq59kccok05fck.apps.googleusercontent.com",
           "client_type": 1,
@@ -84,10 +172,46 @@
               "client_type": 3
             },
             {
-              "client_id": "479968508272-pl8flek6eoas100sb04oc8t24cqq00f1.apps.googleusercontent.com",
+              "client_id": "479968508272-s441d1jp3eepj8eum2mvu5u635h0g9g1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.pickNDeliver"
+                "bundle_id": "com.pickNDelivercustomer"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479968508272:android:8d083d4f5ba689a6df77b5",
+        "android_client_info": {
+          "package_name": "com.pickndeliveratnight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDYEW4HHfAohzknHmD6Ixl6U0vieK6KaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479968508272-euil2ev2ei9ml1f5mgnq9siaf8ilnjcp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "479968508272-s441d1jp3eepj8eum2mvu5u635h0g9g1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pickNDelivercustomer"
               }
             }
           ]
