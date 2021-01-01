@@ -41,7 +41,6 @@ class _ProcessingOrderDataState extends State<ProcessingOrderData> {
   @override
   void initState() {
     _configureNotification();
-    _ProcessigData();
   }
 
 
@@ -81,10 +80,11 @@ class _ProcessingOrderDataState extends State<ProcessingOrderData> {
           "fcmToken": token,
         };
         Services.OTVerification(data).then((data) async {
-          if (data.Data == "1" && data.IsSuccess == true) {
+          if (data.Data == "0" && data.IsSuccess == true) {
             setState(() {
               isLoading = false;
             });
+            _ProcessigData();
           } else {
             setState(() {
               isLoading = false;
@@ -117,7 +117,7 @@ class _ProcessingOrderDataState extends State<ProcessingOrderData> {
         ProcessingOrder = data;
       });
       for(int i=0;i<ProcessingOrder["Data"][0][widget.processdata].length;i++){
-        courierId.add(ProcessingOrder['Data'][0][widget.processdata][i]["courierId"][0]["_id"]);
+        // courierId.add(ProcessingOrder['Data'][0][widget.processdata][i]["courierId"][0]["_id"]);
       }
       print("ProcessingOrder");
       print(ProcessingOrder["Data"][0][widget.processdata]);
@@ -238,7 +238,7 @@ class _ProcessingOrderDataState extends State<ProcessingOrderData> {
                                         ),
                                         Text("${ProcessingOrder['Data'][0][widget.processdata][index]['pickupPoint']['name']}",
                                           style: TextStyle(
-                                              fontSize: MediaQuery.of(context).size.width*0.05, color: Colors.grey.shade800),
+                                              fontSize: MediaQuery.of(context).size.width*0.042, color: Colors.grey.shade800),
                                         ),
                                         GestureDetector(
                                           onTap: () async {

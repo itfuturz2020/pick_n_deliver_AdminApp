@@ -5,26 +5,65 @@ import 'package:http/http.dart' as http;
 import 'package:pickndeliver/Common/ClassList.dart';
 import 'package:pickndeliver/Common/Constants.dart' as cnst;
 import 'package:pickndeliver/Common/Constants.dart';
+import 'package:pickndeliver/Screen/EachEmployeeDeliveryDetailData.dart';
 
 Dio dio = new Dio();
 
 class Services {
 
-  static Future<List> EmployeehistoryData(body) async {
+  static Future<Map> EmployeeDataSingleDate(body) async {
     print(body.toString());
-    String url = 'https://pick-and-delivery.herokuapp.com/admin/getAllEmployee';
-    print("EmployeehistoryData data url : " + url);
+    String url = 'https://pick-and-delivery.herokuapp.com/couriers/getAllEmployeeOrderHistory';
+    print("EmployeeDataSingleDate data url : " + url);
     try {
       final response = await dio.post(url, data: body);
       if (response.statusCode == 200) {
-        print("EmployeehistoryData data Response: " + response.data.toString());
-        return response.data["Data"];
+        print("EmployeeDataSingleDate data Response: " + response.data.toString());
+        return response.data;
       }else {
         throw Exception(response.data.toString());
       }
     }
     catch (e) {
       print("Process data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> EmployeehistoryData(body) async {
+    print(body.toString());
+    String url = 'https://pick-and-delivery.herokuapp.com/couriers/getAllEmployeeOrders';
+    print("EmployeehistoryData data url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        print("EmployeehistoryData data Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("Process data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> EachEmployeeDeliveryData(body) async {
+    print(body.toString());
+    String url = 'https://pick-and-delivery.herokuapp.com/couriers/getEmpAllOrders';
+    print("EachEmployeeDeliveryData data url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        print("EachEmployeeDeliveryData  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("EachEmployeeDeliveryData data Error ${e.toString()}");
       throw Exception(e.toString());
     }
   }

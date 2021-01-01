@@ -131,18 +131,11 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
                 onTap: () {
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => EmployeeDeliveryDateFilter()),
+                    MaterialPageRoute(builder: (context) => EmployeeDeliveryHistory()),
                   );
                 },
               ),
               Divider(),
-              ListTile(
-                title: Text('Item 2'),
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
             ],
           ),
         ),

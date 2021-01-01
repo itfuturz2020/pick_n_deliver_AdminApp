@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class EachEmployeeDeliveryDetailData extends StatefulWidget {
 
-  List Employeedataone = [];
-  int index;
+  var eachEmployeeData;
 
-  EachEmployeeDeliveryDetailData({this.index,this.Employeedataone});
+  EachEmployeeDeliveryDetailData({this.eachEmployeeData});
 
   @override
   _EachEmployeeDeliveryDetailDataState createState() => _EachEmployeeDeliveryDetailDataState();
@@ -51,7 +50,7 @@ class _EachEmployeeDeliveryDetailDataState extends State<EachEmployeeDeliveryDet
                               Padding(
                                 padding: const EdgeInsets.only(left:8.0),
                                 child: Text(
-                                  "C-401 Nest Orchid Althan-Bhimrad Road Surat - 395007",
+                                  "${widget.eachEmployeeData["pickupPoint"]["address"]}",
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
@@ -92,7 +91,7 @@ class _EachEmployeeDeliveryDetailDataState extends State<EachEmployeeDeliveryDet
                               Padding(
                                 padding: const EdgeInsets.only(left:8.0),
                                 child: Text(
-                                  "C-401 Nest Orchid Althan-Bhimrad Road Surat - 395007",
+                                  "${widget.eachEmployeeData["deliveryPoint"]["address"]}",
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
@@ -150,7 +149,7 @@ class _EachEmployeeDeliveryDetailDataState extends State<EachEmployeeDeliveryDet
                     cells: <DataCell>[
                       DataCell(
                         Text(
-                          "${widget.Employeedataone[widget.index]["totalamountcollected"]}" + " /-",
+                          "${widget.eachEmployeeData["amount"]}" + " /-",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -168,7 +167,7 @@ class _EachEmployeeDeliveryDetailDataState extends State<EachEmployeeDeliveryDet
                       ),
                       DataCell(
                         Text(
-                          "${widget.Employeedataone[widget.index]["totalamountcollected"]}" + " /-",
+                          "${widget.eachEmployeeData["finalAmount"]}" + " /-",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -187,7 +186,7 @@ class _EachEmployeeDeliveryDetailDataState extends State<EachEmployeeDeliveryDet
                       ),
                       DataCell(
                         Text(
-                          "${widget.Employeedataone[widget.index]["totalamountcollected"]}" + " /-",
+                          "${widget.eachEmployeeData["amountCollection"]}" + " /-",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

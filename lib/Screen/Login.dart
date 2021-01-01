@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => Home(),
+          builder: (context) => OrderScreen(),
         ),
             (Route<dynamic> route) => false);
   }
@@ -113,7 +113,6 @@ class _LoginState extends State<Login> {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         pr.show();
-
         var data = {
           "mobileNo": edtMobileNo.text,
         };

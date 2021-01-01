@@ -359,16 +359,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget _getItemList(int index, {bool close = false}) {
     return GestureDetector(
       onTap: () {
-        if (close) Navigator.pop(context);
-
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddNewOrder(
-                  orderSetting: ordersettings[0]["deliverytypes"],
-                  categoryList: categoryList,
-                  index: index),
-            ));
+        // if (close) Navigator.pop(context);
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => AddNewOrder(
+        //           orderSetting: ordersettings[0]["deliverytypes"],
+        //           categoryList: categoryList,
+        //           index: index),
+        //     ));
       },
       child: new Container(
           height: 80,

@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => Splash(),
         '/ActiveOrderDetails': (context) => ActiveOrderDetails(),
-        '/AddNewOrder': (context) => AddNewOrder(),
+        // '/AddNewOrder': (context) => AddNewOrder(),
         '/Help': (context) => Help(),
         '/Home': (context) => Home(),
         '/Login': (context) => Login(),
