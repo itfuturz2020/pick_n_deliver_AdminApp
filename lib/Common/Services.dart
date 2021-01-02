@@ -68,6 +68,42 @@ class Services {
     }
   }
 
+  static Future<List> availableDeliveryBoys() async {
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/getAvailableBoys';
+    print("availableDeliveryBoys data url : " + url);
+    try {
+      final response = await dio.post(url);
+      if (response.statusCode == 200) {
+        print("availableDeliveryBoys  Response: " + response.data.toString());
+        return response.data["Data"];
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("availableDeliveryBoys data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> orderAssigned(body) async {
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/AssignOrder';
+    print("orderAssigned data url : " + url);
+    try {
+      final response = await dio.post(url,data: body);
+      if (response.statusCode == 200) {
+        print("orderAssigned  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("orderAssigned data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
   static Future<Map> Processing(body) async {
     print(body.toString());
     String url = cnst.API_URL + 'admin/orders';
