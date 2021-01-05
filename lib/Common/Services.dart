@@ -49,6 +49,24 @@ class Services {
     }
   }
 
+  static Future<Map> VendorDataSingleDate(body) async {
+    String url = 'https://pick-and-delivery.herokuapp.com/vendor/getAllVendorOrderListing';
+    print("VendorDataSingleDate data url : " + url);
+    try {
+      final response = await dio.post(url,data: body);
+      if (response.statusCode == 200) {
+        print("VendorDataSingleDate Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("VendorDataSingleDate Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
   static Future<Map> EachEmployeeDeliveryData(body) async {
     print(body.toString());
     String url = 'https://pick-and-delivery.herokuapp.com/couriers/getEmpAllOrders';
@@ -64,6 +82,79 @@ class Services {
     }
     catch (e) {
       print("EachEmployeeDeliveryData data Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> EachVendorOrderData(body) async {
+    print(body.toString());
+    String url = 'https://pick-and-delivery.herokuapp.com/vendor/vendorOrdersList';
+    print("EachVendorOrderData url : " + url);
+    try {
+      final response = await dio.post(url, data: body);
+      if (response.statusCode == 200) {
+        print("EachVendorOrderData  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("EachVendorOrderData Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> AllExpensesList() async {
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/getAllExpenseData';
+    print("AllExpensesList url : " + url);
+    try {
+      final response = await dio.post(url);
+      if (response.statusCode == 200) {
+        print("AllExpensesList  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("AllExpensesList Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> addExpenseName(body) async {
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/addExpenseCategory';
+    print("addExpenseName url : " + url);
+    try {
+      final response = await dio.post(url,data: body);
+      if (response.statusCode == 200) {
+        print("addExpenseName  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("addExpenseName Error ${e.toString()}");
+      throw Exception(e.toString());
+    }
+  }
+
+  static Future<Map> addNewExpenseEntry(body) async {
+    String url = 'https://pick-and-delivery.herokuapp.com/admin/addExpenseData';
+    print("addNewExpenseEntry url : " + url);
+    try {
+      final response = await dio.post(url,data: body);
+      if (response.statusCode == 200) {
+        print("addNewExpenseEntry  Response: " + response.data.toString());
+        return response.data;
+      }else {
+        throw Exception(response.data.toString());
+      }
+    }
+    catch (e) {
+      print("addNewExpenseEntry Error ${e.toString()}");
       throw Exception(e.toString());
     }
   }
@@ -106,7 +197,8 @@ class Services {
 
   static Future<Map> Processing(body) async {
     print(body.toString());
-    String url = cnst.API_URL + 'admin/orders';
+    String url;
+    url = cnst.API_URL + 'admin/orders';
     print("Processing data url : " + url);
     try {
       final response = await dio.post(url, data: body);

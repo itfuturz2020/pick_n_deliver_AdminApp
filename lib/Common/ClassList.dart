@@ -16,6 +16,32 @@ class SaveDataClass {
   }
 }
 
+class expenseSource {
+  String id;
+  String sourceName;
+
+  expenseSource({this.id, this.sourceName});
+
+  factory expenseSource.fromJson(Map<String, dynamic> json) {
+    return expenseSource(
+        id: json['Id'].toString() as String,
+        sourceName: json['Title'].toString() as String);
+  }
+}
+
+class paymentTypeClass {
+  String id;
+  String name;
+
+  paymentTypeClass({this.id, this.name});
+
+  factory paymentTypeClass.fromJson(Map<String, dynamic> json) {
+    return paymentTypeClass(
+        id: json['Id'].toString() as String,
+        name: json['Name'].toString() as String);
+  }
+}
+
 class SaveClassForPayment {
   String Message;
   bool IsSuccess;

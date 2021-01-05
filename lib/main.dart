@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:pickndeliver/Screen/ActiveOrderDetails.dart';
+import 'package:pickndeliver/Screen/AddExpense.dart';
 import 'package:pickndeliver/Screen/AddNewOrder.dart';
 import 'package:pickndeliver/Screen/ContactList.dart';
 import 'package:pickndeliver/Screen/Coupons_offers.dart';
@@ -21,6 +22,8 @@ import 'package:pickndeliver/Screen/SignUp.dart';
 import 'package:pickndeliver/Screen/Splash.dart';
 import 'package:pickndeliver/Common/Constants.dart' as cnst;
 import 'package:pickndeliver/Screen/TermsAndCondition.dart';
+
+import 'Screen/dailyExpensesList.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,11 +90,13 @@ class _MyAppState extends State<MyApp> {
         '/MyProfile': (context) => MyProfile(),
         '/OrderPlaced': (context) => OrderPlaced(),
         '/Setting': (context) => Setting(),
+        '/AddExpense': (context) => AddExpense(),
         '/SignUp': (context) => SignUp(),
         '/OTP': (context) => OTP(),
         '/Orders': (context) => OrderScreen(),
         '/TermsAndCondition': (context) => TermsAndCondition(),
         '/ContactList': (context) => ContactList(),
+        '/Expense' : (context) => Expense(),
         '/Coupons_offers': (context) => Coupons_offers(),
         '/EmplyoyeeDelivery': (context) => EmployeeDeliveryHistory(),
       },

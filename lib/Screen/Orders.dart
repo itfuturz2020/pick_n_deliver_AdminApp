@@ -3,11 +3,13 @@ import 'package:pickndeliver/Common/Services.dart';
 import 'package:pickndeliver/Common/Constants.dart' as cnst;
 import 'package:pickndeliver/Screen/EmployeeDeliveryDateFilter.dart';
 import 'package:pickndeliver/Screen/Login.dart';
+import 'package:pickndeliver/Screen/VendorsDeliveryHistory.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'EmployeeDeliveryHistory.dart';
 import 'ProcessingOrderData.dart';
+import 'dailyExpensesList.dart';
 
 
 class OrderScreen extends StatefulWidget {
@@ -132,6 +134,36 @@ class _OrderScreenState extends State<OrderScreen> {
                 onTap: () {
                   Navigator.push(context,
                     MaterialPageRoute(builder: (context) => EmployeeDeliveryHistory()),
+                  );
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text(
+                  'Vendors History',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => VendorsDeliveryHistory()),
+                  );
+                },
+              ),
+              Divider(),
+              ListTile(
+                title: Text(
+                  'Daily Expenses',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Expense()),
                   );
                 },
               ),
