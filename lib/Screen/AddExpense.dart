@@ -27,7 +27,7 @@ class _AddExpenseState extends State<AddExpense> {
   void initState() {
     IncomeType.add("Cash");
     IncomeType.add("Online");
-    _getExpenseData();
+    // _getExpenseData();
     super.initState();
   }
 
@@ -91,6 +91,7 @@ class _AddExpenseState extends State<AddExpense> {
     }
   }
 
+  String addedExpenseId = "";
   _addExpense(String name) async {
     try {
       final result = await InternetAddress.lookup('google.com');
@@ -107,9 +108,8 @@ class _AddExpenseState extends State<AddExpense> {
             setState(() {
               allExpensesName.add(data["Data"][0]["name"]);
               isLoading = false;
-              allExpenses = data["Data"];
+              addedExpenseId = data["Data"][0]["_id"];
             });
-            _getExpenseData();
           } else {
             setState(() {
               isLoading = false;
@@ -140,8 +140,9 @@ class _AddExpenseState extends State<AddExpense> {
         Future res = Services.addNewExpenseEntry(data);
         res.then((data) async {
           if (data["Data"] != null && data["Data"].length > 0) {
+            Navigator.pushReplacementNamed(context, "/Expense");
             Fluttertoast.showToast(
-                msg: data["Message"],
+                msg: "Expense Added Successfully",
                 backgroundColor: cnst.appPrimaryMaterialColor2,
                 textColor: Colors.white,
                 gravity: ToastGravity.TOP,
@@ -396,6 +397,8 @@ class _AddExpenseState extends State<AddExpense> {
                               }
                               else{
                                 print("expenseId is empty");
+                                addNewExpense(addedExpenseId, incomeType,
+                                    txtDescription.text, txtAmount.text);
                               }
                             }
                           },

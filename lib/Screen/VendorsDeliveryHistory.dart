@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:pickndeliver/Common/Services.dart';
 import 'package:date_range_picker/date_range_picker.dart' as DateRangePicker;
 import 'package:pickndeliver/Screen/SingleVendorOrderDetail.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart' as pulltorefresh;
 import '../Common/Constants.dart' as cnst;
 import 'EmployeeDeliveryDetail.dart';
@@ -29,11 +30,14 @@ class _VendorsDeliveryHistoryState extends State<VendorsDeliveryHistory> {
   bool specificdate = false;
   var onfilteramount;
   var onfilterdeliveries = 0;
+  ProgressDialog pr;
 
   @override
   void initState() {
     super.initState();
     VendorHistoryDataForSingleDay();
+    pr = new ProgressDialog(context, type: ProgressDialogType.Normal);
+    pr.style(message: 'Please Wait');
   }
 
   showMsg(String msg) {
@@ -79,6 +83,7 @@ class _VendorsDeliveryHistoryState extends State<VendorsDeliveryHistory> {
       final result = await InternetAddress.lookup('google.com');
       var data;
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        pr.show();
         if (dateSelected == null) {
           data = {
             "ofDate":
@@ -95,8 +100,9 @@ class _VendorsDeliveryHistoryState extends State<VendorsDeliveryHistory> {
         print("data");
         print(data);
         Services.VendorDataSingleDate(data).then((data) async {
-          if (data["Data"] != 0) {
-            todaysDateData = true;
+          todaysDateData = true;
+          if (data["Data"] !=[]) {
+            pr.hide();
             setState(() {
               VendorData = data["Data"];
             });
@@ -368,12 +374,12 @@ class _VendorsDeliveryHistoryState extends State<VendorsDeliveryHistory> {
                     // );
                     if (picked != null) {
                       print(picked);
-                      specificdate = true;
                       specificdatelist.clear();
                       amount = 0.0;
                       totalOrders = 0;
                       dateonselected = picked.toString().split(" ")[0];
                       setState(() {
+                        specificdate = true;
                         dateselected = picked.toString();
                       });
                       // datafiltered(picked);
@@ -411,8 +417,11 @@ class _VendorsDeliveryHistoryState extends State<VendorsDeliveryHistory> {
           ),
         ],
       ),
-      body: VendorData.length == 0
-          ? Center(child: CircularProgressIndicator())
+      body: (VendorData.length == 0 && !todaysDateData)
+          ? Center(child: CircularProgressIndicator()) : VendorData.length ==0 && todaysDateData ?
+          Center(
+            child: Text("No Data Found"),
+          )
           : Stack(
               children: [
                 SingleChildScrollView(
