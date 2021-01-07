@@ -27,7 +27,7 @@ class _AddExpenseState extends State<AddExpense> {
   void initState() {
     IncomeType.add("Cash");
     IncomeType.add("Online");
-    // _getExpenseData();
+    _getExpenseData();
     super.initState();
   }
 

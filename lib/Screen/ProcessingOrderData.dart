@@ -407,58 +407,55 @@ class _ProcessingOrderDataState extends State<ProcessingOrderData> {
                                                 SizedBox(
                                                   height: 10,
                                                 ),
-                                                SingleChildScrollView(
-                                                  scrollDirection: Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: <Widget>[
-                                                      // Text("${cnst.Inr_Rupee} ${widget.completeOrder["amount"]}",
-                                                      //     style: TextStyle(fontSize: 18)),
-                                                      Text(
-                                                        "Drop :",
-                                                        style: TextStyle(
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: <Widget>[
+                                                    // Text("${cnst.Inr_Rupee} ${widget.completeOrder["amount"]}",
+                                                    //     style: TextStyle(fontSize: 18)),
+                                                    Text(
+                                                      "Drop :",
+                                                      style: TextStyle(
+                                                        fontSize: 18,
+                                                        color: Colors
+                                                            .grey.shade800,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    Text(
+                                                      "${ProcessingOrder['Data'][0][widget.processdata][index]['deliveryPoint']["name"]}",
+                                                      style: TextStyle(
                                                           fontSize: 18,
                                                           color: Colors
-                                                              .grey.shade800,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                      Text(
-                                                        "${ProcessingOrder['Data'][0][widget.processdata][index]['deliveryPoint']["name"]}",
-                                                        style: TextStyle(
-                                                            fontSize: 18,
-                                                            color: Colors
-                                                                .grey.shade800),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 2,
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () async {
-                                                          String telephoneUrl =
-                                                              "tel:${ProcessingOrder['Data'][0][widget.processdata][index]['deliveryPoint']["mobileNo"]}";
+                                                              .grey.shade800),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 2,
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () async {
+                                                        String telephoneUrl =
+                                                            "tel:${ProcessingOrder['Data'][0][widget.processdata][index]['deliveryPoint']["mobileNo"]}";
 
-                                                          if (await canLaunch(
-                                                              telephoneUrl)) {
-                                                            await launch(
-                                                                telephoneUrl);
-                                                          } else {
-                                                            throw "Can't phone that number.";
-                                                          }
-                                                        },
-                                                        child: Icon(
-                                                          Icons.call,
-                                                          color: Colors.green,
-                                                        ),
+                                                        if (await canLaunch(
+                                                            telephoneUrl)) {
+                                                          await launch(
+                                                              telephoneUrl);
+                                                        } else {
+                                                          throw "Can't phone that number.";
+                                                        }
+                                                      },
+                                                      child: Icon(
+                                                        Icons.call,
+                                                        color: Colors.green,
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                                 Row(
                                                   crossAxisAlignment:
